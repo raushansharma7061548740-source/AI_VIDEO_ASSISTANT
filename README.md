@@ -2,7 +2,11 @@
 
 AI Video Assistant is a Python project that helps users understand long videos or audio files quickly.
 
-The user can provide a YouTube URL or a local audio/video file. The application processes the audio, converts it into smaller chunks, transcribes it using Sarvam AI, and then uses Mistral AI to generate useful information from the transcript.
+A Python-based application that processes YouTube videos or local audio/video files and converts them into useful, searchable information.
+
+The application extracts audio, splits it into manageable chunks, transcribes the content using Sarvam AI, and uses an LLM to generate summaries and extract important information such as action items, key decisions, and open questions.
+
+The transcript is also stored in a vector database, allowing users to ask questions about the video using a RAG pipeline.
 
 It can generate:
 
@@ -38,20 +42,38 @@ The project also includes a RAG system that allows users to ask questions about 
 
 ## Project Structure
 
-```text
-AI_VIDEO_ASSISTANT/
-│
-├── core/
-│   ├── transcriber.py
-│   ├── summarize.py
-│   ├── extractor.py
-│   ├── vector_stores.py
-│   └── rag_engine.py
-│
-├── utlis/
-│   └── audio_processing.py
-│
-├── main.py
-├── requirements.txt
-├── .env
-└── .gitignore
+YouTube URL / Local File
+            │
+            ▼
+     Audio Processing
+            │
+            ▼
+      Audio Chunking
+            │
+            ▼
+   Sarvam AI Transcription
+            │
+            ▼
+     Full Transcript
+            │
+      ┌─────┴──────┐
+      ▼            ▼
+ LLM Analysis    ChromaDB
+      │            │
+      ▼            ▼
+Summary, Title    RAG Question Answering
+Action Items
+Decisions
+Questions
+
+
+Current Limitations
+
+Long videos can take time because audio chunks are transcribed individually.
+Processing speed depends on the API response time.
+YouTube downloading depends on yt-dlp and YouTube restrictions.
+API rate limits may affect processing large transcripts.
+
+Author
+
+Raushan Kumar
