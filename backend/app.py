@@ -22,7 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from utils.audio_processing import process_input
+from utlis.audio_processing import process_input
 from core.transcriber import transcribe_all
 from core.summarize import summarize, generate_title
 from core.extractor import (
