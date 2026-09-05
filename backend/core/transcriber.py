@@ -17,7 +17,7 @@ client = SarvamAI(
 )
 
 
-MODEL_NAME = "saaras:v4"
+MODEL_NAME = "saaras:v3"
 
 
 def transcribe_chunk(chunk_path: str) -> str:

@@ -1,4 +1,4 @@
-from langchain_mistralai import ChatMistralAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -6,12 +6,18 @@ from langchain_core.runnables import RunnablePassthrough,RunnableLambda
 
 import os
 
+from langchain_core.rate_limiters import InMemoryRateLimiter
+
+#rate_limiter = InMemoryRateLimiter(
+#   requests_per_second=0.5,  # 1 request every 2 seconds
+ #   max_bucket_size=1,
+#)
 
 def get_llm():
-    return ChatMistralAI(
-        model = "mistral-small-latest",
-        mistral_api_key = os.getenv("MISTRAL_API_KEY"),
-        temperature = 0.3
+    return ChatGoogleGenerativeAI(
+        model="gemini-2.5-flash",
+        google_api_key=os.getenv("GOOGLE_API_KEY"),
+        temperature=0.2,
     )
 
 def split_transcript(transcript : str)-> list:
