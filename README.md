@@ -70,7 +70,7 @@ AI-VIDEO-ASSISTANT/
 - If you start seeing "429 rate limit" errors, it usually means you're sending requests to the API faster than it allows. Adding a small delay or a rate limiter between calls fixes it.
 
 ## Stuff I still want to add
-
+- it will work very good at vs code terminal but when i deployed this i face many problems like ai cannot use the youtube link.so i decided to step down currently
 - A way to process multiple files at once instead of one at a time
 - Figuring out who said what (speaker labels) in the transcript
 - Being able to export the summary and action items as a PDF
