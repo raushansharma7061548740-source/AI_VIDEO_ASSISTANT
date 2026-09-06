@@ -24,6 +24,7 @@ def download_youtube_audio(url: str) -> str:
         ],
         "ffmpeg_location": FFMPEG_DIR,
         "quiet": True,
+        "cookiefile": os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cookies.txt")
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
