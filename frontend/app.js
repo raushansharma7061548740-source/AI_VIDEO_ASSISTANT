@@ -1,3 +1,5 @@
+const API_BASE = "https://ai-video-assistant-h58o.onrender.com";
+
 const state = {
   sessionId: null,
   mode: "url", // "url" | "file"
@@ -65,7 +67,7 @@ processBtn.addEventListener("click", async () => {
   chatPanel.classList.add("hidden");
 
   try {
-    const res = await fetch("/api/process", {
+    const res = await fetch(`${API_BASE}/api/process`, {
       method: "POST",
       body: formData,
     });
@@ -118,7 +120,7 @@ async function sendChat() {
   chatSend.disabled = true;
 
   try {
-    const res = await fetch("/api/chat", {
+    const res = await fetch(`${API_BASE}/api/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ session_id: state.sessionId, question }),
