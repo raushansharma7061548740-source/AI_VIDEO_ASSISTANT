@@ -6,12 +6,15 @@ from langchain_core.documents import Document
 
 CHROMA_DIR = "vector_db"
 COLLECTION_NAME = "meeting_transcript"
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
+
+
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 def get_embedding():
-    return HuggingFaceBgeEmbeddings(
-        model_name = EMBEDDING_MODEL
+    return GoogleGenerativeAIEmbeddings(
+        model="models/embedding-001",
+        google_api_key=os.getenv("GEMINI_API_KEY")
     )
 
 
