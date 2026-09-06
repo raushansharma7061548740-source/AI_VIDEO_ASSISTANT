@@ -173,5 +173,8 @@ async def chat(req: ChatRequest):
     return ChatResponse(answer=answer)
 
 
-# Serve the frontend (frontend/index.html, frontend/app.js, frontend/style.css)
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
+# Serve the frontend. app.py lives in backend/, and frontend/ is a sibling
+# folder one level up (project_root/frontend), so resolve it relative to
+# this file's actual location on disk.
+FRONTEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
+app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
